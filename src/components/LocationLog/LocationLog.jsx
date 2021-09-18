@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import ReactMapGL from 'react-map-gl';
 
-const App = () => {
+export const LocationLog = () => {
   const [viewport, setViewport] = useState({
     width: '100vw',
     height: '100vh',
@@ -20,5 +20,3 @@ const App = () => {
     />
   );
 };
-
-export default App;
