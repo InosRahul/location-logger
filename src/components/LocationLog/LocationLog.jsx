@@ -2,19 +2,20 @@ import React from 'react';
 import { useState } from 'react';
 import { useAuth, useLogEntries } from 'hooks';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
-import { LogEntry, DeleteLogEntry } from 'components';
+import { LogEntry, DeleteLogEntry, EditLogEntry } from 'components';
 
 export const LocationLog = () => {
   const { authUser } = useAuth();
   const [showPopup, setShowPopup] = useState({});
   const [addLogEntry, setAddLogEntry] = useState(null);
+  const [editLogEntry, setEditLogEntry] = useState(null);
   const logEntries = useLogEntries(authUser?.uid);
 
   const [viewport, setViewport] = useState({
     width: '100vw',
     height: '100vh',
-    latitude: 37.7577,
-    longitude: -122.4376,
+    latitude: 22.2587,
+    longitude: 71.1924,
     zoom: 3,
   });
 
@@ -23,6 +24,17 @@ export const LocationLog = () => {
     setAddLogEntry({
       longitude,
       latitude,
+    });
+  };
+
+  const showEditLogMarkerPopup = entry => {
+    const latitude = entry.latitude;
+    const longitude = entry.longitude;
+    const id = entry.id;
+    setEditLogEntry({
+      latitude,
+      longitude,
+      id,
     });
   };
 
@@ -78,6 +90,16 @@ export const LocationLog = () => {
                   {entry.image && <img src={entry.image} alt={entry.title} />}
                   <p>{entry.description}</p>
                 </div>
+                <form className="entry-form">
+                  <button
+                    onClick={() => {
+                      setShowPopup({});
+                      showEditLogMarkerPopup(entry);
+                    }}
+                  >
+                    Update Entry
+                  </button>
+                </form>
                 <DeleteLogEntry
                   entry={entry}
                   id={entry.id}
@@ -123,6 +145,46 @@ export const LocationLog = () => {
                     setAddLogEntry(null);
                   }}
                   location={addLogEntry}
+                />
+              </div>
+            </Popup>
+          </>
+        ) : editLogEntry ? (
+          <>
+            <Marker
+              latitude={editLogEntry.latitude}
+              longitude={editLogEntry.longitude}
+            >
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  className="marker green"
+                  style={{
+                    height: `${6 * viewport.zoom}px`,
+                    width: `${6 * viewport.zoom}px`,
+                  }}
+                >
+                  <path fill="none" d="M0 0h24v24H0z" />
+                  <path d="M11 19.945A9.001 9.001 0 0 1 12 2a9 9 0 0 1 1 17.945V24h-2v-4.055zM12 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z" />
+                </svg>
+              </div>
+            </Marker>
+            <Popup
+              latitude={editLogEntry.latitude}
+              longitude={editLogEntry.longitude}
+              closeButton={true}
+              closeOnClick={false}
+              dynamicPosition={true}
+              onClose={() => setEditLogEntry(null)}
+              anchor="top"
+            >
+              <div className="popup">
+                <EditLogEntry
+                  onClose={() => {
+                    setEditLogEntry(null);
+                  }}
+                  doc={editLogEntry}
                 />
               </div>
             </Popup>

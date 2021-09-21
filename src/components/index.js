@@ -5,3 +5,4 @@ export * from './FormField';
 export * from './LocationLog';
 export * from './LogEntry';
 export * from './DeleteLogEntry';
+export * from './EditLogEntry';

@@ -23,7 +23,7 @@ export const DeleteLogEntry = ({ entry, id, onClose }) => {
     <form className="entry-form" onSubmit={handleSubmit(deleteLogEntry)}>
       {error ? <h3 className="error">{error}</h3> : null}
       <button {...register('delete')} disabled={loading}>
-        {loading ? 'Loading...' : 'Create Entry'}
+        {loading ? 'Loading...' : 'Delete Entry'}
       </button>
     </form>
   );
