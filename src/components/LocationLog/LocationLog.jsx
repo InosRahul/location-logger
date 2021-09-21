@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useState } from 'react';
 import { useAuth, useLogEntries } from 'hooks';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
-import { LogEntry } from 'components';
+import { LogEntry, DeleteLogEntry } from 'components';
 
 export const LocationLog = () => {
   const { authUser } = useAuth();
   const [showPopup, setShowPopup] = useState({});
   const [addLogEntry, setAddLogEntry] = useState(null);
-
   const logEntries = useLogEntries(authUser?.uid);
 
   const [viewport, setViewport] = useState({
@@ -76,7 +75,14 @@ export const LocationLog = () => {
                   <small>
                     Visited on: {new Date(entry.visitDate).toLocaleDateString()}
                   </small>
+                  {entry.image && <img src={entry.image} alt={entry.title} />}
+                  <p>{entry.description}</p>
                 </div>
+                <DeleteLogEntry
+                  entry={entry}
+                  id={entry.id}
+                  onClose={() => setAddLogEntry(null)}
+                />
               </Popup>
             ) : null}
           </React.Fragment>

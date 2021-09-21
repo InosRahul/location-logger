@@ -1,6 +1,6 @@
 import { firebaseService } from 'service';
-import { useAuth, useLogEntries } from 'hooks';
-import { useState, useEffect } from 'react';
+import { useAuth } from 'hooks';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 export const LogEntry = ({ location, onClose }) => {
@@ -21,6 +21,7 @@ export const LogEntry = ({ location, onClose }) => {
           description: data.description,
           visitDate: data.visitDate,
           comments: data.comments,
+          image: data.image,
         });
       }
       onClose();
@@ -44,6 +45,8 @@ export const LogEntry = ({ location, onClose }) => {
         rows={3}
         {...register('description')}
       ></textarea>
+      <label htmlFor="image">Image</label>
+      <input name="image" {...register('image')} />
       <label htmlFor="visitDate">Visit Date</label>
       <input name="visitDate" type="date" required {...register('visitDate')} />
       <button disabled={loading}>
