@@ -4,6 +4,11 @@ import { useAuth, useLogEntries } from 'hooks';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { LogEntry, DeleteLogEntry, EditLogEntry, SignOut } from 'components';
 
+// @ts-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass =
+  require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+
 export const LocationLog = () => {
   const { authUser } = useAuth();
   const [showPopup, setShowPopup] = useState({});
