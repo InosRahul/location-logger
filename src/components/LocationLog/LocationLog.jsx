@@ -3,9 +3,11 @@ import { useState } from 'react';
 import { useAuth, useLogEntries } from 'hooks';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { LogEntry, DeleteLogEntry, EditLogEntry, SignOut } from 'components';
+import mapboxgl from 'mapbox-gl';
 
 // @ts-ignore
 // eslint-disable-next-line import/no-webpack-loader-syntax
+/* eslint-disable */
 mapboxgl.workerClass =
   require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
