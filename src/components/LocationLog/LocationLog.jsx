@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useAuth, useLogEntries } from 'hooks';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
-import { LogEntry, DeleteLogEntry, EditLogEntry } from 'components';
+import { LogEntry, DeleteLogEntry, EditLogEntry, SignOut } from 'components';
 
 export const LocationLog = () => {
   const { authUser } = useAuth();
@@ -191,6 +191,7 @@ export const LocationLog = () => {
           </>
         ) : null}
       </ReactMapGL>
+      <SignOut />
     </div>
   );
 };
