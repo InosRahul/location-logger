@@ -33,19 +33,36 @@ export const EditLogEntry = ({ doc, onClose }) => {
     <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
       {error ? <h3 className="error">{error}</h3> : null}
       <label htmlFor="title">Title</label>
-      <input name="title" required {...register('title')} />
+      <input
+        name="title"
+        required
+        {...register('title')}
+        defaultValue={doc.title}
+      />
       <label htmlFor="comments">Comments</label>
-      <textarea name="comments" rows={3} {...register('comments')}></textarea>
+      <textarea
+        name="comments"
+        rows={3}
+        {...register('comments')}
+        defaultValue={doc.comments}
+      ></textarea>
       <label htmlFor="description">Description</label>
       <textarea
         name="description"
         rows={3}
         {...register('description')}
+        defaultValue={doc.description}
       ></textarea>
       <label htmlFor="image">Image</label>
-      <input name="image" {...register('image')} />
+      <input name="image" {...register('image')} defaultValue={doc.image} />
       <label htmlFor="visitDate">Visit Date</label>
-      <input name="visitDate" type="date" required {...register('visitDate')} />
+      <input
+        name="visitDate"
+        type="date"
+        required
+        {...register('visitDate')}
+        defaultValue={doc.visitDate}
+      />
       <button disabled={loading}>
         {loading ? 'Loading...' : 'Update Entry'}
       </button>
