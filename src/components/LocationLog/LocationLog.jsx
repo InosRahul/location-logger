@@ -35,23 +35,7 @@ export const LocationLog = () => {
   };
 
   const showEditLogMarkerPopup = entry => {
-    // const latitude = entry.latitude;
-    // const longitude = entry.longitude;
-    // const id = entry.id;
-    // const title = entry.title;
-    // const comments = entry.comments;
-    // const description = entry.description;
-    // const visitDate = entry.visitDate;
-    // const image = entry.image;
     setEditLogEntry({
-      // latitude,
-      // longitude,
-      // id,
-      // title,
-      // comments,
-      // description,
-      // visitDate,
-      // image,
       ...entry,
     });
   };
@@ -64,6 +48,10 @@ export const LocationLog = () => {
         {...viewport}
         onViewportChange={nextViewport => setViewport(nextViewport)}
         onDblClick={showAddLogMarkerPopup}
+        onClick={() => {
+          setShowPopup({});
+          setAddLogEntry(null);
+        }}
       >
         {logEntries?.map(entry => (
           <React.Fragment key={entry.id}>

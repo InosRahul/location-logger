@@ -45,7 +45,7 @@ export const LogEntry = ({ location, onClose }) => {
         rows={3}
         {...register('description')}
       ></textarea>
-      <label htmlFor="image">Image</label>
+      <label htmlFor="image">Image URL</label>
       <input name="image" {...register('image')} />
       <label htmlFor="visitDate">Visit Date</label>
       <input name="visitDate" type="date" required {...register('visitDate')} />

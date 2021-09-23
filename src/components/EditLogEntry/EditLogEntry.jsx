@@ -53,7 +53,7 @@ export const EditLogEntry = ({ doc, onClose }) => {
         {...register('description')}
         defaultValue={doc.description}
       ></textarea>
-      <label htmlFor="image">Image</label>
+      <label htmlFor="image">Image URL</label>
       <input name="image" {...register('image')} defaultValue={doc.image} />
       <label htmlFor="visitDate">Visit Date</label>
       <input
