@@ -166,3 +166,12 @@ code {
   border-radius: 50px;
   text-align: center;
 }
+
+.instruct {
+  position: fixed;
+  left: 20px;
+  bottom: 10px;
+  right: 20px;
+  color: #fff;
+  text-align: center;
+}

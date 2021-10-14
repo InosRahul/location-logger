@@ -196,6 +196,9 @@ export const LocationLog = () => {
             </Popup>
           </>
         ) : null}
+        <p className="instruct">
+          Double Click anywhere on the map to add an entry.
+        </p>
       </ReactMapGL>
       <SignOut />
     </div>
