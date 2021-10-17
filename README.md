@@ -13,3 +13,7 @@ Location logger lets you log your location on a map.
 2. Firebase - Authentication/CRUD Operations
 3. Mapbox - Map library
 4. Formik - Form and form validations.
+
+[Live Demo](https://location-logger.vercel.app/)
+
+![project-demo](demo.png)
