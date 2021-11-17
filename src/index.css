@@ -78,6 +78,9 @@ code {
   cursor: pointer;
   background-color: #030a24;
 }
+.auth-form .guest-btn {
+  margin: 10px;
+}
 .auth-form button:hover {
   box-shadow: 0px 0px 3px black;
 }
